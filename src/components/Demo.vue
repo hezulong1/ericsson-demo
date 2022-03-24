@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
+import Select from './Select.vue'
 import provinces from '~/data/City.json'
 
 interface IBase {
@@ -68,50 +69,31 @@ watch(selectedArea, (v) => {
         省：{{ selectedProvince }}
       </p>
       <p>
-        市: {{ selectedCity }}
+        市：{{ selectedCity }}
       </p>
       <p>
-        区: {{ selectedArea }}
+        区：{{ selectedArea }}
       </p>
       <p>
-        乡镇: {{ selectedTown }}
+        乡镇：{{ selectedTown }}
       </p>
     </fieldset>
-    <select v-model="selectedProvince">
-      <option disabled value="">
-        Please select one
-      </option>
-      <option v-for="d in provinces" :key="d.code" :value="d.code">
-        {{ d.name }}
-      </option>
-    </select>
-
-    <select v-model="selectedCity">
-      <option disabled value="">
-        Please select one
-      </option>
-      <option v-for="d in cities" :key="d.code" :value="d.code">
-        {{ d.name }}
-      </option>
-    </select>
-
-    <select v-model="selectedArea">
-      <option disabled value="">
-        Please select one
-      </option>
-      <option v-for="d in areas" :key="d.code" :value="d.code">
-        {{ d.name }}
-      </option>
-    </select>
-
-    <select v-model="selectedTown">
-      <option disabled value="">
-        Please select one
-      </option>
-      <option v-for="d in towns" :key="d.code" :value="d.code">
-        {{ d.name }}
-      </option>
-    </select>
+    <p>
+      <label>省：</label>
+      <Select v-model="selectedProvince" :options="provinces" />
+    </p>
+    <p v-if="cities.length">
+      <label>市：</label>
+      <Select v-model="selectedCity" :options="cities" />
+    </p>
+    <p v-if="areas.length">
+      <label>区：</label>
+      <Select v-model="selectedArea" :options="areas" />
+    </p>
+    <p v-if="towns.length">
+      <label>乡镇：</label>
+      <Select v-model="selectedTown" :options="towns" />
+    </p>
   </form>
 </template>
 
