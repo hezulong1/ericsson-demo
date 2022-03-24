@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import Test from './components/Test.vue'
+import Demo from './components/Demo.vue'
 </script>
 
 <template>
-  <Test />
+  <Demo />
 </template>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  width: 300px;
+  margin: auto;
+  padding: 1.5rem;
+
+  background-color: #f7f8f9;
+  border-radius: 4px;
 }
 </style>
